@@ -189,7 +189,7 @@ module GB
     def [](index : Int) : UInt8
       # todo: not all of these registers are used. unused registers _should_ return 0xFF
       # - sound doesn't take all of 0xFF10..0xFF3F
-      tick_components
+      tick_components from_cpu: false
       return 0xFF_u8 if (0 < @dma_position <= 0xA0) && OAM.includes?(index)
       read_byte index
     end
@@ -249,7 +249,7 @@ module GB
 
     # write 8 bits to memory and tick other components
     def []=(index : Int, value : UInt8) : Nil
-      tick_components
+      tick_components from_cpu: false
       return if (0 < @dma_position <= 0xA0) && OAM.includes?(index)
       write_byte index, value
     end

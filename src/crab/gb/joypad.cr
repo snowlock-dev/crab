@@ -14,11 +14,11 @@ module GB
     property b = false
     property a = false
 
-    def initialize(@gb : GB)
+    def initialize(@gb : GB? = nil)
     end
 
     def read : UInt8
-      ~(0x00_u8 |
+      ~(0xC0_u8 |
         @button_keys.to_unsafe << 5 |
         @direction_keys.to_unsafe << 4 |
         ((@down && @direction_keys) || (@start && @button_keys)).to_unsafe << 3 |

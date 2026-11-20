@@ -1,6 +1,6 @@
 require "./spec_helper"
 
-describe CPU do
+describe GB::CPU do
   describe "registers" do
     it "do computations correctly across registers" do
       cpu = new_cpu [] of UInt8
